@@ -8,14 +8,21 @@ import plane from "./basic/shapes/plane.js"
 import keyListener from "./basic/keyListener.js"
 import keyCode from "./basic/keyCode.js"
 import loopMachine from "./loopMachine.js"
+import characterController from "./controllers/CharacterController.js"
+import keyController from "./controllers/KeyController.js"
+import moveController from "./controllers/MoveController.js"
 
 scene.add(cube);
 scene.add(light);
 scene.add(plane)
 
 // camera.position.z = 5;
-camera.position.set(2,2,2)  
+camera.position.set(2,2,-2)  
 camera.lookAt(cube.position)
+
+characterController.addCharacter(cube)
+characterController.addController(keyController)
+characterController.addController(moveController)
 
 loopMachine.addCallback(() =>{
     if(keyListener.isPressed(keyCode.ENTER)) cube.rotation.y += 0.01;
@@ -28,3 +35,4 @@ console.log(scene, camera, renderer, cube)
 resize.start(renderer)
 loopMachine.start()
 keyListener.start()
+characterController.start()
