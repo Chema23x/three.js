@@ -31,7 +31,7 @@ loopMachine.addCallback(() =>{
 
 
 
-console.log(scene, camera, renderer, cube)
+
 resize.start(renderer)
 loopMachine.start()
 keyListener.start()
